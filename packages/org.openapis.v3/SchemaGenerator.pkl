@@ -292,7 +292,8 @@ local function getProperties(clazz: reflect.Class): Map<String, reflect.Property
   else
     let (properties = clazz.properties
       .filter((_, prop) -> !(prop.type is reflect.FunctionType))
-      .filter((_, prop) -> !prop.modifiers.contains("hidden")))
+      .filter((_, prop) -> !prop.modifiers.contains("hidden"))
+      .filter((_, prop) -> prop.name != "output"))
       if (clazz.superclass == clazz || clazz.superclass == null)
         properties
       else
